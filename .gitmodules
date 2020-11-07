@@ -1,0 +1,6 @@
+[submodule "67-frontend"]
+	path = 67-frontend
+	url = git@github.com:giacomoratta/docker-67-frontend.git
+[submodule "114-complex"]
+	path = 114-complex
+	url = git@github.com:giacomoratta/docker-114-complex
