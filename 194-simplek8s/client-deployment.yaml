@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+
+# object-type
+kind: Deployment
+
+# name for this object
+metadata:
+  name: client-deployment
+
+spec:
+  # number of pods to be run
+  replicas: 5
+
+  # defines how Deployment object will find the pods created by itself
+  # (in this case, pods with label "component:web")
+  # ...but labels can be more complicated (with more key-values)
+  selector:
+    matchLabels:
+      component: web
+
+  # template for Pods run by Deployment object
+  # (basically a copy-paste of client-pod.yaml)
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: stephengrider/multi-client
+          ports:
+            - containerPort: 3000
