@@ -12,15 +12,18 @@
 - `server-deployment.yml`
     - 3 replicas of multi-server pod
 - `worker-deployment.yml`
-    - 1 replica of multi-server pod, so we can see we need other replicas
+    - 1 replica of multi-worker pod, so we can see we need other replicas
 - `redis-deployment.yml`
-    - 3 replicas of multi-server pod
+    - 1 replica of redis pod
+- `postgres-deployment.yml`
+    - 1 replica1 of postgres pod
 
 #### ClusterIP Services
 - `client-cluster-ip-service.yml`
 - `server-cluster-ip-service.yml`
 - ~~`worker-cluster-ip-service.yml`~~ (because it does not need to be accessed from other pods)
 - `redis-cluster-ip-service.yml`
+- `postgres-cluster-ip-service.yml`
 
 ##### Common parts
 - 1 service as 'ClusterIP'
