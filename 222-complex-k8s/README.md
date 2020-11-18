@@ -6,10 +6,17 @@
 2. `kubectl get services`\
     `kubectl delete service <service-name>`
 
-#### `client-deployment.yml`
-- 3 replicas of multi-client pod
+#### Deployments
+- `client-deployment.yml`
+    - 3 replicas of multi-client pod
+- `server-deployment.yml`
+    - 3 replicas of multi-server pod
 
-#### `client-cluster-ip-service.yml`
+#### ClusterIP Services
+- `client-cluster-ip-service.yml`
+- `server-cluster-ip-service.yml`
+
+##### Common parts
 - 1 service as 'ClusterIP'
 - no need of external access, so no 'nodePort'
 - same port and targetPort (in this case, no need of mismatch)
