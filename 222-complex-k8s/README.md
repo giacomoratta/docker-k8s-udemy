@@ -11,6 +11,8 @@
     - 3 replicas of multi-client pod
 - `server-deployment.yml`
     - 3 replicas of multi-server pod
+- `worker-deployment.yml`
+    - 1 replica of multi-server pod, so we can see we need other replicas
 
 #### ClusterIP Services
 - `client-cluster-ip-service.yml`
