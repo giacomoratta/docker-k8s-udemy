@@ -12,8 +12,19 @@ spec:
       labels:
         component: postgres
     spec:
+      volumes:
+        # declare with volume is going to use
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: database-persistent-volume-claim
       containers:
         - name: postgres
           image: postgres
           ports:
             - containerPort: 5432
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+
+              # this option is specific for postgres db only
+              subPath: postgres

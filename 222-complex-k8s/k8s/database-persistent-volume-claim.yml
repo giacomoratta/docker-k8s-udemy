@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: database-persistent-volume-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+
+# Access Modes (accessModes)
+#   - ReadWriteOnce: can be used by a single node
+#   - ReadOnlyMany: multiple nodes can only read
+#   - ReadWriteMany: multiple nodes can read and write
+
+# Where does k8s decide to create the volume?
+#   kubectl get storageclass
+#   kubectl describe storageclass
+
+# Get persistent volumes
+#   kubectl get pv

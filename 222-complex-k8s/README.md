@@ -32,6 +32,9 @@
 - port = access from other pods
 - targetPort = where the app is listening to
 
+### Volumes
+- `database-persistent-volume-claim.yml`
+
 #### Apply all
 - `kubectl apply -f <dir-name>`
 - `kubectl apply -f k8s`
