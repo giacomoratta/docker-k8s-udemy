@@ -28,3 +28,12 @@ spec:
 
               # this option is specific for postgres db only
               subPath: postgres
+
+          # PGPASSWORD stored as secret (after running the following command)
+          # kubectl create secret generic pgpassword --from-literal PGPASSWORD=***
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD
