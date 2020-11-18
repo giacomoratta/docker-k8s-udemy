@@ -16,3 +16,8 @@ spec:
         - name: worker
           image: stephengrider/multi-worker
           # ports: worker does not need to be accessed from outside
+          env:
+            - name: REDIS_HOST
+              value: redis-cluster-ip-service
+            - name: REDIS_PORT
+              value: 6379
