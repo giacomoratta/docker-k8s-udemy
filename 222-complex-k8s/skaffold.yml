@@ -1,0 +1,53 @@
+# Reference: https://skaffold.dev/docs/references/yaml/
+
+apiVersion: skaffold/v2beta10
+kind: Config
+build:
+
+  local:
+    # prevent pushing docker images after small changes on local evn
+    push: false
+
+  artifacts:
+    - image: giacomoratta/multi-client
+      context: client
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        manual:
+          # update pod anytime a js, css, html file changes [mode2]
+          # any changes on different files, skaffold will update the entire cluster [mode1]
+          - src: '**/*.js'
+            dest: .
+          - src: '**/*.css'
+            dest: .
+          - src: '**/*.html'
+            dest: .
+
+    - image: giacomoratta/multi-server
+      context: server
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        manual:
+          - src: '**/*.js'
+            dest: .
+
+    - image: giacomoratta/multi-worker
+      context: worker
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        manual:
+          - src: '**/*.js'
+            dest: .
+
+
+deploy:
+  kubectl:
+    manifests:
+      - k8s/client-deployment.yml
+      - k8s/server-deployment.yml
+      - k8s/worker-deployment.yml
+      - k8s/client-cluster-ip-service.yml
+      - k8s/server-cluster-ip-service.yml
